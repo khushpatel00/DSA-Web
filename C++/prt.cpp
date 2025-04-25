@@ -16,6 +16,6 @@ int main(){
     cout<<"the total amount will be : "<<ans;
     return 0;
 
-    
+
 
 }
