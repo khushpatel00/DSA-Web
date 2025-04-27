@@ -19,7 +19,7 @@ int main(){
     cout<<"2. Substraction   ( - )\n";
     cout<<"3. Multiplication ( * )\n";
     cout<<"4. Division       ( / )\n";
-    cout<<"5. Modulos        ( % )\n";
+    // cout<<"5. Modulos        ( % )\n";
 
     cin>>function;
     switch (function)

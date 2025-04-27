@@ -28,9 +28,13 @@ int main()
     {
         cout << "You Got an E";
     }
-    else
+    else if (grade < 37.5)
     {
         cout << "You Failed !!";
+    }
+    else
+    {
+        cout << "Invalid Grade, Failed to Generate Your Grade\nTry Again..";
     }
     return 0;
 }
