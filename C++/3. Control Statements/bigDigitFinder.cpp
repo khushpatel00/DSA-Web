@@ -11,7 +11,16 @@ int main(){
     cout<<"Enter value of C : ";
     cin>>c;
 
-    if(a > b){
+    if(a==b & b==c){
+        cout<<"All are Same !!";
+    }
+    else if(a==b){
+        cout<<"A and B are same";
+    }
+    else if(b==c){
+        cout<<"B and C are Same";
+    }
+    else if(a > b){
         if(a > c){
             cout<<"A is Max\n";
         }
