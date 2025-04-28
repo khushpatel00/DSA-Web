@@ -11,5 +11,5 @@ int main()
         cout << "enter any value less than 10 : ";
         cin >> a;
     }
-    cout<<"the recorded value is `"<<a<<endl;
+    cout<<"the recorded value is "<<a<<endl;
 }
