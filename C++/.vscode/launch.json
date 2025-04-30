@@ -8,8 +8,8 @@
       "args": [],
       "stopAtEntry": false,
       "externalConsole": true,
-      "cwd": "x:/Code/DSA/C++/4. Loops",
-      "program": "x:/Code/DSA/C++/4. Loops/build/Debug/outDebug",
+      "cwd": "x:/Code/DSA/C++/PR - 2",
+      "program": "x:/Code/DSA/C++/PR - 2/build/Debug/outDebug",
       "MIMode": "gdb",
       "miDebuggerPath": "gdb",
       "setupCommands": [
