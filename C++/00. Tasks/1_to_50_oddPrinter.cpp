@@ -1,5 +1,8 @@
 #include <iostream>
 using namespace std;
+
+// series of 1 to 50 (odd only)
+
 int main()
 {
     int i;
