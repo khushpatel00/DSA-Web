@@ -6,6 +6,4 @@ int main (){
     cin>>rad;
     cout<<"the area of circle is: "<<3.14*(rad*2);
     return 0; 
-
-    
 } 

@@ -18,6 +18,4 @@ int main(){
     int numToChar = 98;
     cout<<"\nCharacter? > "<<(char)numToChar;
     cin>>num;
-
-        
 }

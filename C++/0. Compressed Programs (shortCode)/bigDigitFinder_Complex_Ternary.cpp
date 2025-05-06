@@ -10,10 +10,8 @@ int main(){
     cin>>b;
     cout<<"Enter value of C : ";
     cin>>c;
-
-
+    
     // SAME PROGRAM WITH EASIER STEPS TO UNDERSTAND
-
 
     // if(a > b){
     //     if(a > c){
@@ -32,13 +30,6 @@ int main(){
     //     }
     // }
 
-
     // TERNERY OPERATOR (COMPLEX)
-
-
     a>b ? a>c ? cout<<"A is Max" : cout<<"C is Max" : b>c ? cout<<"B is Max" : cout<<"C is Max";
-
- 
-
-
 }

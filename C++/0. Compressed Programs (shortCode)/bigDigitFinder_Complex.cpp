@@ -18,5 +18,4 @@ int main(){
     else if(a>b && a>c){cout<<"A is Max";}
     else if(b>a && b>c){cout<<"B is Max";}
     else if(c>a && c>b){cout<<"C is Max";}
-
 }
