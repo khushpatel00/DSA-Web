@@ -24,9 +24,9 @@ int main()
         cout<<endl;
     }
     cout<<"Enter the row number : ";
-    cin>>j;
+    cin>>j; //used alternate variables to use less variable
     
-    if(j >= row) cout<<"sum of row "<<row<<" is : 0"<<endl;
+    if(j >= row) cout<<"sum of row "<<row<<" is : 0"<<endl; // when the row is entered 3 (row count =  3) the sum is garbage value
     else{
         for(i=0;i<col;i++) sum = sum + arr[j][i];
         cout<<"sum of row "<<row<<" is : "<<sum<<endl;
@@ -34,11 +34,14 @@ int main()
     sum = 0; // reset the previos sum
     
     cout<<"Enter the column number : ";
-    cin>>j;
-    if(j >= col) cout<<"the sum of column "<<col<<"is : 0"<<endl;
+    cin>>j; //used alternate variables to use less variable
+    if(j >= col) cout<<"the sum of column "<<col<<"is : 0"<<endl; 
 	else{
         for(i=0;i<row;i++) sum = sum + arr[i][j];
         cout<<"the sum of column "<<col<<"is : "<<sum<<endl;
     }   
+
+    
+  
     
 }
