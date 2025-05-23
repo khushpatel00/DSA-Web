@@ -39,9 +39,5 @@ int main()
 	else{
         for(i=0;i<row;i++) sum = sum + arr[i][j];
         cout<<"the sum of column "<<col<<"is : "<<sum<<endl;
-    }   
-
-    
-  
-    
+    } 
 }
