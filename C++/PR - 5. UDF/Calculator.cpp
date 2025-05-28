@@ -23,34 +23,42 @@ int userinput(){
 int calculation(int action){ // using the same name for no confusion
     //input
     int a,b;
-    cout<<"Enter the first number: ";
-    cin>>a;
-    cout<<"Enter the second number: ";
-    cin>>b;
 
-    // calculation
-    switch(action){
-        case 1:
-            cout<<"Addition of "<<a<<" and "<<b<<" is: "<<a+b<<endl;
-            break;
-        case 2:
-            cout<<"Subtraction of "<<a<<" and "<<b<<" is: "<<a-b<<endl;
-            break;
-        case 3:
-            cout<<"Multiplication of "<<a<<" and "<<b<<" is: "<<a*b<<endl;
-            break;
-        case 4:
-            if(b!=0) cout<<"Division of "<<a<<" and "<<b<<" is: "<<a/b<<endl;
-            else cout<<"Error, cant divide by 0"<<endl;
-            break;
-        case 5:
-            cout<<"Modulus of "<<a<<" and "<<b<<" is: "<<a%b<<endl;
-            break;
-        case 0:
-            return 0;
-            break;
-        default:
-            cout<<"Invalid choice, please try again."<<endl;
-            break;  
+    if(action == 0) return 0;
+    else if(action < 0 || action > 5){
+        cout<<"Invalid choice, please try again."<<endl;
+        return userinput(); // reset progra,
+    }
+    else{
+        cout<<"Enter the first number: ";
+        cin>>a;
+        cout<<"Enter the second number: ";
+        cin>>b;
+
+        // calculation
+        switch(action){
+            case 1:
+                cout<<"Addition of "<<a<<" and "<<b<<" is: "<<a+b<<endl;
+                break;
+            case 2:
+                cout<<"Subtraction of "<<a<<" and "<<b<<" is: "<<a-b<<endl;
+                break;
+            case 3:
+                cout<<"Multiplication of "<<a<<" and "<<b<<" is: "<<a*b<<endl;
+                break;
+            case 4:
+                if(b!=0) cout<<"Division of "<<a<<" and "<<b<<" is: "<<a/b<<endl;
+                else cout<<"Error, cant divide by 0"<<endl;
+                break;
+            case 5:
+                cout<<"Modulus of "<<a<<" and "<<b<<" is: "<<a%b<<endl;
+                break;
+            case 0:
+                return 0;
+                break;
+            default:
+                cout<<"Invalid choice, please try again."<<endl;
+                break;  
+        }
     }
 }
