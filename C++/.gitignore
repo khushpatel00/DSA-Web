@@ -22,3 +22,5 @@ C++/4. Loops/seriesOfSum_Loop.exe
 C++/00. Tasks/build/Debug/1_to_50_oddPrinter.o
 C++/00. Tasks/build/Debug/factorialCalc.o
 C++/00. Tasks/build/Debug/outDebug.exe
+.vscode/*
+C++/.vscode/*
