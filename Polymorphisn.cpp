@@ -17,8 +17,7 @@ public:
         float ans;
         cout << "Enter radius :- ";
         cin >> r;
-        ans = 3.14 * r * r;
-        cout << "Circle area :- " << ans << endl;
+        cout << "Circle area :- " << 3.14 * r * r << endl;
     }
 };
 class Tringle : public Shape
@@ -32,8 +31,7 @@ public:
         cin >> b;
         cout << "Enter Tringle Height:- ";
         cin >> h;
-        ans = 0.5 * b * h;
-        cout << "Tringle area :- " << ans << endl;
+        cout << "Tringle area :- " << 0.5 * b * h << endl;
     }
 };
 class Ractangle : public Shape
@@ -47,13 +45,12 @@ public:
         cin >> w;
         cout << "Enter Ractangle Height:- ";
         cin >> h;
-        ans = w * h;
-        cout << "Ractangle area :- " << ans << endl;
+        cout << "Ractangle area :- " << w * h << endl;
     }
 };
 main()
 {
-    Shape *s; // pointer object
+    Shape *s;
     Circle c;
     Tringle t;
     Ractangle r;
