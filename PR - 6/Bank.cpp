@@ -1,50 +1,83 @@
 #include <iostream>
 #include <fstream>
+
 using namespace std;
 class server{
+
     private:
-    int write(string holder, int accNo, float bal){
-        fstream serverDatabase;
-        serverDatabase.open("serverDatabase.txt", ios::out);
-        serverDatabase << holder <<", "<< accNo <<", " << bal <<endl;
+        void write(string holder, long int accNo, float bal){
+            string txtExtension = ".txt";
+            fstream serverDatabase;
+            string filename = to_string(accNo) + txtExtension; // Create a file named with acc number
+            ofstream DatabaseFile(filename);
+            DatabaseFile << "Account Holder: " << holder << "\n";
+            DatabaseFile << "Account No.: " << accNo << "\n";
+            DatabaseFile << "Account Balance: " << bal << "\n";
+        }
 
-    }
     public:
-    void createAccount(){
-        int accNo;
-        float accBalance;
-        string accHolder;
+    int accountCount = -1; // to start counting from 0 (used in index)
+        int createAccount(){
+            long int accNo; // if user gives long account no. 
+            float accBalance;
+            string accHolder;
 
-        cout << "Enter Account Holder Name: ";
-        cin >> accHolder;
-        cout << "Enter Account No.: ";
-        cin >> accNo;
-        cout << "Enter Account balance: ";
-        cin >> accBalance;
-        write(accHolder, accNo, accBalance);
-    }
+            cout << "Enter Account Holder Name: ";
+            cin >> accHolder;
+            cout << "Enter Account No.: ";
+            cin >> accNo;
+            cout << "Enter Account balance: ";
+            cin >> accBalance;
+
+
+            accountCount++; // number used while deleting all database files
+
+            write(accHolder, accNo, accBalance);
+
+            return accNo;
+        }
+        void getInfo(long int accNo){
+            string InfoPrinter;
+            // ifstream serverDatabase;
+            ifstream in(to_string(accNo) + ".txt");
+            // cout<<getline(in, InfoPrinter);
+            getline(in, InfoPrinter);
+            cout<<endl<<"------------------------------------------"<<endl;
+            cout<<InfoPrinter<<endl;
+            getline(in, InfoPrinter);
+            cout<<InfoPrinter<<endl;
+            getline(in, InfoPrinter);
+            cout<<InfoPrinter;
+            cout<<"\n------------------------------------------\n\n";
+        }
+        void destroyAccountData(){
+
+        }
 };
-int main()
-{
+int main(){
     server s;
-    int action;
-    while (1)
-    {
+    int allAccNo[];
+    int action,temp;
+    long int accNo;
+    s->ac
+    while (1){
         // fstream serverDatabase;
         // serverDatabase.open("serverDatabase.txt", ios::out);
         cout << "1. Create Account\n2. Account Info\n3. Deposit Money\n4. Withdraw Money\n0. Exit\nEnter Your Choice: ";
         cin >> action;
-        if (action == 0)
+        if (action == 0){
+            s.destroyAccountData(allAccNo[]);
             return 0;
-        else
-        {
-            switch (action)
-            {
+        }
+        else{
+            switch (action){
             case 1:
-                s.createAccount();
+                allAccNo[s.accountCount] = s.createAccount(); // calling function inside a assigning value, to store in array, used when destroying filw
                 break;
             case 2:
-                cout << "\n--- Getting Info ---\n\n";
+                cout<<"Enter Account No.: ";
+                cin>>accNo;
+                s.getInfo(accNo);
                 break;
             case 3:
                 cout << "\n--- Depositing Money ---\n\n";
