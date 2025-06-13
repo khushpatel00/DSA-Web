@@ -62,6 +62,7 @@
     "istream": "cpp",
     "ios": "cpp",
     "ostream": "cpp",
-    "*.tcc": "cpp"
+    "*.tcc": "cpp",
+    "fstream": "cpp"
   }
 }

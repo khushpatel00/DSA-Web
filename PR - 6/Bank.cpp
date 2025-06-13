@@ -1,91 +1,61 @@
 #include <iostream>
+#include <fstream>
 using namespace std;
-
-
-
-class Server{
+class server{
     private:
-        int serverAccNo, serverAmount;
-        string serverHolderName;
+    int write(string holder, int accNo, float bal){
+        fstream serverDatabase;
+        serverDatabase.open("serverDatabase.txt", ios::out);
+        serverDatabase << holder <<", "<< accNo <<", " << bal <<endl;
+
+    }
     public:
-        void bank(string serverHolderName, int serverAccNo, int serverAmount){
-            this->serverHolderName = serverHolderName;
-            this->serverAccNo = serverAccNo;
-            this->serverAmount = serverAmount;
-        }
-        int accFinder(int accNo, int iterations){
-            for(int i=0; i<=iterations; i++){
-                if(serverAccNo == accNo) return i;
-            }
-            return -1;
-        }
-        int getIndex(int accNo, int iterations){
-            // int indexOfAccount = accFinder(accNo, iterations);
-            // return indexOfAccount;
-            
-            int accountIndex = accFinder(accNo, iterations);
-            if(accountIndex = -1) cout<<"------ Account not Found ------ ";
-            else return accountIndex;
-        }
-        void callDetails(){
-            cout<<"\nAccount Holder Name: "<<serverHolderName;
-            cout<<"\nAccount no.: "<<serverAccNo;
-            cout<<"\nAmount in Account: "<<serverAmount;
-        }
+    void createAccount(){
+        int accNo;
+        float accBalance;
+        string accHolder;
+
+        cout << "Enter Account Holder Name: ";
+        cin >> accHolder;
+        cout << "Enter Account No.: ";
+        cin >> accNo;
+        cout << "Enter Account balance: ";
+        cin >> accBalance;
+        write(accHolder, accNo, accBalance);
+    }
 };
-
-
-
-int main(){
-    Server s[50];
-    int action,amount,accNo, iterationCount = 0;
-    string holderName;
-    cout<<"\n\n-------------------------------------------------";
-    cout<<"\n\n---------------------- SBI ----------------------";
-while(1){
-    cout<<"\n\n-------------------------------------------------\n\n";
-        cout<<"1. Create Account"<<endl<<"2. Deposit amount"<<endl<<"3. Withdraw amount"<<endl<<"4. Account details"<<endl<<"0 (or CTRL + C). Exit \n";
-            cout<<"Enter your choice : ";
-        cin>>action;
-
-        if(action == 0) return 0; // exiting program directly, without running the program again
-        else{
-            switch (action){
+int main()
+{
+    server s;
+    int action;
+    while (1)
+    {
+        // fstream serverDatabase;
+        // serverDatabase.open("serverDatabase.txt", ios::out);
+        cout << "1. Create Account\n2. Account Info\n3. Deposit Money\n4. Withdraw Money\n0. Exit\nEnter Your Choice: ";
+        cin >> action;
+        if (action == 0)
+            return 0;
+        else
+        {
+            switch (action)
+            {
             case 1:
-                cout<<"\n--- Creating Account ---\n\n";
-                cout<<"Enter Account Holder's name: ";
-                cin>>holderName;
-                cout<<"Enter Account no. : ";
-                cin>>accNo;
-                cout<<"Enter Amount : ";
-                cin>>amount;
-                s[iterationCount++].bank(holderName,accNo,amount);
+                s.createAccount();
                 break;
             case 2:
-                cout<<"\n--- Deposit Amount ---\n\n";
-                cout<<"Enter account no. : ";
-                cin>>accNo;
-                cout<<"Enter amount to deposit: ";
-                cin>>amount;
+                cout << "\n--- Getting Info ---\n\n";
                 break;
             case 3:
-                cout<<"\n--- Withdraw Amount ---\n\n";
-                cout<<"Enter account no. : ";
-                cin>>accNo;
-                cout<<"Enter amount to withdraw : ";
-                cin>>amount;
+                cout << "\n--- Depositing Money ---\n\n";
                 break;
-            case 4: 
-                cout<<"\n--- Account Details ---\n\n";
-                cout<<"Enter account no. : ";
-                cin>>accNo;
-                // s[] = s->getDetails(accNo, iterationCount);
-                s[s->getIndex(accNo, iterationCount)].callDetails();
-
-                
+            case 4:
+                cout << "\n--- Withdrawing Money ---\n\n";
+                break;
             default:
+                cout << "\n--- Invalid Choice, Try Again ---\n\n";
                 break;
             } // switch
         } // else
-    } // while (infinite)
+    } // while(infinite)
 } // main
