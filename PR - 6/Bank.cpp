@@ -1,6 +1,9 @@
 // WARNING: this code might not run in DEV C++, because of software issue in DEV C++,
 // Solution: Use other IDE: VSCode, CLion or online Compiler 
 
+// Request: Please allow deleting all user data and accounts made during current session
+// the option (to delete data) is given after exiting the program
+
 #include <iostream>
 #include <fstream>
 #include <sstream> // for extracting stem(integar) from string
@@ -14,7 +17,7 @@ class server{
         string txtExtension = ".txt";
         
         void write(string holder, long int accNo, double bal){
-            // fstream serverDatabase;
+            // fstream serverDatabase; // (useless)
             string filename = to_string(accNo) + txtExtension; // Create a file named with acc number
             ofstream DatabaseFile(filename);
             DatabaseFile << "Account Holder: " << holder << "\n";
@@ -49,9 +52,9 @@ class server{
 
         void getInfo(long int accNo){
             string InfoPrinter;
-            // ifstream serverDatabase;
+            // ifstream serverDatabase; // (useless)
             ifstream in(to_string(accNo) + ".txt");
-            // cout<<getline(in, InfoPrinter);
+            // cout<<getline(in, InfoPrinter); // (used for checking error)
             getline(in, InfoPrinter);
             cout<<endl<<"------------------------------------------"<<endl;
             cout<<InfoPrinter<<endl;
@@ -204,8 +207,8 @@ int main(){
     int action;
     long int accNo, amount;
     while (1){
-        // fstream serverDatabase;
-        // serverDatabase.open("serverDatabase.txt", ios::out);
+        // fstream serverDatabase; // (no need to open file here)
+        // serverDatabase.open("serverDatabase.txt", ios::out); // (no need for serverdatabase file, using new file for every new user)
         cout << "1. Create Account\n2. Account Info\n3. Deposit Money\n4. Withdraw Money\n0 (or CTRL + C). Exit\nEnter Your Choice: ";
         cin >> action;
             if (action == 0){
@@ -215,7 +218,7 @@ int main(){
                 cin>>DeleteConfirmation;
                 if ( DeleteConfirmation == 'y' || DeleteConfirmation == 'Y'){
 
-                    // s.adminCredentailCheck();
+                    // s.adminCredentailCheck(); //(using this in if condition to take the return value as true or false)
                     if(s.adminCredentailCheck() == 0) cout<<"Wrong username or password";
                     else{
                         for(int i = 0; i <= s.accountCount; i++){
@@ -232,6 +235,10 @@ int main(){
         else{
             switch (action){
             case 1:
+                // int temp, tempAccoNo;
+                // temp = s.accountCount
+                // tempAccoNo = s.createAccount();
+                // allAccNo[temp] = tempAccoNo;            
                 allAccNo[s.accountCount] = s.createAccount(); // calling function inside a assigning value, to store in array, used when destroying filw
                 break;
             case 2:
