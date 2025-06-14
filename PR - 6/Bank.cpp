@@ -16,7 +16,7 @@ class server{
         }
 
     public:
-    int accountCount = -1; // to start counting from 0 (used in index)
+    int accountCount = 0; // to start counting from 0 (used in index)
         int createAccount(){
             long int accNo; // if user gives long account no. 
             float accBalance;
@@ -50,24 +50,37 @@ class server{
             cout<<InfoPrinter;
             cout<<"\n------------------------------------------\n\n";
         }
-        void destroyAccountData(){
 
+        int destroyAccountData(int AccNo[] = {}){
+            cout<<"------------------------------\n          Destroying\n------------------------------";
+            string filename;
+            for(int i=0; i<=accountCount; i++){
+                filename = to_string(AccNo[i]) + ".txt"; 
+                remove(filename.c_str()); // remove file with the name of account number
+            }
         }
 };
 int main(){
     server s;
-    int allAccNo[];
+    int allAccNo[100];
     int action,temp;
     long int accNo;
-    s->ac
     while (1){
         // fstream serverDatabase;
         // serverDatabase.open("serverDatabase.txt", ios::out);
         cout << "1. Create Account\n2. Account Info\n3. Deposit Money\n4. Withdraw Money\n0. Exit\nEnter Your Choice: ";
         cin >> action;
         if (action == 0){
-            s.destroyAccountData(allAccNo[]);
+            cout<<"------ Do you want to Delete All Userdata and Accounts Made (During this Session Only)? ------";
+
+            for(int i = 0; i < s.accountCount; i++){
+                cout << "Account No. " << allAccNo[i] << " is being destroyed.\n";
+            }
+            s.destroyAccountData(allAccNo);
             return 0;
+
+
+
         }
         else{
             switch (action){
