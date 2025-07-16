@@ -36,6 +36,7 @@ class server{
 
             cout << "Enter Account Holder Name (Without Spaces): "; // spaces in string will crash the program (infinite loop)
             cin >> accHolder;
+            // getline(cin, accHolder);
             cout << "Enter Account No.: ";
             cin >> accNo;
             cout << "Enter Account balance: ";
@@ -69,7 +70,7 @@ class server{
         void destroyAccountData(int AccNo[]){
             cout<<"------------------------------\n          Destroying\n------------------------------";
             string filename;
-            for(int i=0; i<=accountCount; i++){
+            for(int i=0; i<accountCount; i++){
                 filename = to_string(AccNo[i]) + ".txt"; 
                 remove(filename.c_str()); // remove file with the name of account number
             }
