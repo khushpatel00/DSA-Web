@@ -12,8 +12,8 @@ using namespace std;
 class server{
     
     private:
-        string username = "Admin";
-        string password = "Admin"; // default username and password
+        const string username = "Admin";
+        const string password = "Admin"; // default username and password
         string txtExtension = ".txt";
         
         void write(string holder, long int accNo, double bal){
@@ -39,6 +39,12 @@ class server{
             // getline(cin, accHolder);
             cout << "Enter Account No.: ";
             cin >> accNo;
+
+            if(checkAccountExistence(accNo)){
+                cout<<"Account with account no: \'"<<accNo<<"\' Already Exists!\n\n";
+                return accNo;
+            }
+
             cout << "Enter Account balance: ";
             cin >> accBalance;
 
@@ -84,10 +90,10 @@ class server{
             cout << "Enter Admin Password: ";
             cin >> pass;
             if (user == username && pass == password){
-                return 1; // return 1 if login successful
+                return 1; // return 1 if login successful // true
             }
             else{
-                return 0; // return 0 if login failed
+                return 0; // return 0 if login failed // false
             }
         }
 
@@ -181,6 +187,7 @@ class server{
                         }
                         else{
                             cout << "Insufficient balance to withdraw the amount.\n";
+                            return 1;
                         }
 
 
@@ -193,7 +200,8 @@ class server{
                         
                         infile.close();
                         outfile.close();
-                        return 1;
+                        cout << "\n--- Money withdrawed ---\n\n";
+                        return 0;
 
                 // code ended here (AI generated)
         }
@@ -220,9 +228,13 @@ int main(){
                 if ( DeleteConfirmation == 'y' || DeleteConfirmation == 'Y'){
 
                     // s.adminCredentailCheck(); //(using this in if condition to take the return value as true or false)
-                    if(s.adminCredentailCheck() == 0) cout<<"Wrong username or password";
+                    checkCredential:
+                    if(s.adminCredentailCheck() == 0){ 
+                        cout<<"Wrong username or password, Try Again\n\n";
+                        goto checkCredential;
+                    }
                     else{
-                        for(int i = 0; i <= s.accountCount; i++){
+                        for(int i = 0; i < s.accountCount; i++){
                             cout << "Account No. " << allAccNo[i] << " is being destroyed.\n";
                         }
                         s.destroyAccountData(allAccNo);
@@ -272,7 +284,6 @@ int main(){
                     cin>>amount;
                     cout << "\n--- Withdrawing Money ---\n\n";
                     s.withdrawMoney(accNo, amount);
-                    cout << "\n--- Money withdrawed ---\n\n";
                 }
                 break;
             default:
