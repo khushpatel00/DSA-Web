@@ -98,8 +98,6 @@ class sort{
     }
 
 };
-
-
 int main(){
     sort sort;
     int action = -1, confirmation;
