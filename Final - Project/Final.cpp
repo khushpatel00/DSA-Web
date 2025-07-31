@@ -174,7 +174,7 @@ class binarySearch{
         }
 };
 
-class merge{
+class merge {
     public:
     void merger(int arr[], int l, int mid, int r) {
         int i = l, j = mid + 1, k = 0;
@@ -182,26 +182,14 @@ class merge{
 
         while (i <= mid && j <= r) {
             if (arr[i] < arr[j]) {
-                tempArr[k] = arr[i];
-                i++;
+                tempArr[k++] = arr[i++];
             } else {
-                tempArr[k] = arr[j];
-                j++;
+                tempArr[k++] = arr[j++];
             }
-            k++;
         }
 
-        while (i <= mid) {
-            tempArr[k] = arr[i];
-            i++;
-            k++;
-        }
-
-        while (j <= r) {
-            tempArr[k] = arr[j];
-            j++;
-            k++;
-        }
+        while (i <= mid) tempArr[k++] = arr[i++];
+        while (j <= r)   tempArr[k++] = arr[j++];
 
         for (int x = 0; x < k; x++) {
             arr[l + x] = tempArr[x];
@@ -215,40 +203,91 @@ class merge{
             mergeSort(arr, mid + 1, r);
             merger(arr, l, mid, r);
         }
-        binarySearch binary;
-        binary.printArray();
+    }
+
+    void printArray(int arr[], int n) {
+        cout << "\nSorted Array:\n";
+        for (int i = 0; i < n; i++) {
+            cout << "    arr[" << i << "] = " << arr[i] << endl;
+        }
     }
 };
 
-int main(){
+
+class QuickSort {
+public:
+    void quickSort(int arr[], int low, int high) {
+        if (low < high) {
+            int pi = partition(arr, low, high);
+            quickSort(arr, low, pi - 1);
+            quickSort(arr, pi + 1, high);
+        }
+    }
+
+    int partition(int arr[], int low, int high) {
+        int pivot = arr[high]; // last element as pivot
+        int i = low - 1;
+
+        for (int j = low; j < high; j++) {
+            if (arr[j] < pivot) {
+                i++;
+                swap(arr[i], arr[j]);
+            }
+        }
+        swap(arr[i + 1], arr[high]);
+        return i + 1;
+    }
+
+    void printArray(int arr[], int n) {
+        cout << "\nSorted Array (Quick Sort):\n";
+        for (int i = 0; i < n; i++) {
+            cout << "    arr[" << i << "] = " << arr[i] << endl;
+        }
+    }
+};
+
+
+int main() {
     LinkedListMenu listMenu;
     binarySearch binary;
     merge merge;
+    QuickSort quick;
 
-    int action,index,value;
-    while(1){
-        cout<<"\n\n\n1. Linked List Operations\n2. Binary Search\n3. Merge Sort (take array input First or there will be infinite loop)\n4.Quick Sort\n5. Take Array Input\nEnter your Choice: ";
-        cin>>action;
-         switch(action){
+    int action;
+
+    while (1) {
+        cout << "\n\n\n1. Linked List Operations"
+             << "\n2. Binary Search"
+             << "\n3. Merge Sort"
+             << "\n4. Quick Sort"
+             << "\n5. Take Array Input"
+             << "\n0. Exit"
+             << "\nEnter your Choice: ";
+        cin >> action;
+
+        switch (action) {
             case 1:
                 listMenu.LinkedListMenuFunction();
-            break;
+                break;
             case 2:
-                int confirmation;
-                binary.arrayInput();
                 binary.Search();
-            break;
+                break;
             case 3:
-                merge.mergeSort(binary.arr, 0 ,binary.n-1);
-            break;
-            case 34:
-                merge.mergeSort(binary.arr, 0 ,binary.n-1);
-            break;
+                merge.mergeSort(binary.arr, 0, binary.n - 1);
+                merge.printArray(binary.arr, binary.n);
+                break;
+            case 4:
+                quick.quickSort(binary.arr, 0, binary.n - 1);
+                quick.printArray(binary.arr, binary.n);
+                break;
             case 5:
                 binary.arrayInput();
-            break;
-
-         }
-
+                break;
+            case 0:
+                cout << "Exiting program...\n";
+                return 0;
+            default:
+                cout << "Invalid option. Try again.\n";
+        }
     }
 }
